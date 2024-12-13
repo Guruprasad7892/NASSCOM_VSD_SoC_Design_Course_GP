@@ -182,5 +182,69 @@ ngspice sky130_inv.spice
 
 ```
 
+![D3_10](https://github.com/user-attachments/assets/6d217052-fab9-445f-bb1a-e075052a7d87)
+
+![D3_11](https://github.com/user-attachments/assets/16b4a59a-f646-4377-b1e0-0e43e7b21b7c)
+
+![D3_12](https://github.com/user-attachments/assets/9f347242-4f3a-42ce-8742-140f400918a3)
+
+![D3_13](https://github.com/user-attachments/assets/4ef07410-7cc9-4ef2-ab15-9600f86f0eb7)
+
+```
+//go to home directory
+cd
+
+//Command to download the lab files
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+//command to extract file
+tar xfz drc_tests.tgz
+
+// change directory to lab folder
+cd drc_tests
+
+//List all files and directories present in the current directory
+ls -al
+
+//Command to view .magicrc file
+gvim .magicrc
+
+//Command to open magic tool in better graphics
+magic -d XR &
+
+```
+
+
+![D3_14](https://github.com/user-attachments/assets/bb1fa3d6-be75-4777-8b5d-14cf0ed063fd)
+
+![D3_15](https://github.com/user-attachments/assets/59ebcff0-3577-49e6-988c-562ab74ba080)
+
+![D3_16](https://github.com/user-attachments/assets/f445f365-46e5-42e9-9795-05e0d493c673)
+
+# SECTION-4 (LABS)
+
+Pre-layout timing analysis and Clock Tree Synthesis
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+```
+
+```
+magic -T sky130A.tech sky130_inv.mag &
+
+```
+
+In tkcon window
+
+```
+help grid
+
+```
+
+```
+grid 0.46um 0.34um 0.23um 0.17um
+
+```
 
 
