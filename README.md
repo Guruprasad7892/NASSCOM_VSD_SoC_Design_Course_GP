@@ -672,4 +672,24 @@ run_cts
 gen_pdn
 
 ```
+![D5_1](https://github.com/user-attachments/assets/00f6b117-72f0-4ef6-b597-7e015d0f7fe9)
 
+![D5_2](https://github.com/user-attachments/assets/06250b3c-8dee-4bc8-9e13-c57836e7adb0)
+
+Commands for routing
+
+```
+# Check value of 'CURRENT_DEF'
+echo $::env(CURRENT_DEF)
+
+# Check value of 'ROUTING_STRATEGY'
+echo $::env(ROUTING_STRATEGY)
+
+# Command for detailed route using TritonRoute
+run_routing
+
+```
+
+![D5_3](https://github.com/user-attachments/assets/0330d6fc-130e-48e7-9faf-e67a70a4f85f)
+
+![D5_4](https://github.com/user-attachments/assets/c9d51a87-cab6-4ce9-860d-171fa444577b)
