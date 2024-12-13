@@ -687,7 +687,12 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 ```
 
-567
+![D5_5](https://github.com/user-attachments/assets/336c2595-d1ba-45e4-a6b7-f0a01d6bbeb5)
+
+![D5_6](https://github.com/user-attachments/assets/b893b9bb-c1ae-41c2-95a0-461983b568a8)
+
+![D5_7](https://github.com/user-attachments/assets/875672fd-7b4c-4ad1-abae-337ff2a74971)
+
 
 Commands for routing
 
@@ -707,4 +712,13 @@ run_routing
 
 ![D5_4](https://github.com/user-attachments/assets/c9d51a87-cab6-4ce9-860d-171fa444577b)
 
+Commands to load routed def in magic in other termina
 
+```
+# Change directory to path containing routed def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/12-10_16-14/results/routing/
+
+# Command to load the routed def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+
+```
