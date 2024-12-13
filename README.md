@@ -722,3 +722,55 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/12-10
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
 
 ```
+![D5_8](https://github.com/user-attachments/assets/82f217e2-cfe9-4a87-8c62-d1455727af01)
+
+![D5_9](https://github.com/user-attachments/assets/14dcd50b-9afd-465e-817c-72400c517125)
+
+![D5_10](https://github.com/user-attachments/assets/1f5ccf72-6568-43a5-8cb7-6a041ba8bb7f)
+
+Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+
+```
+# Command to run OpenROAD tool
+openroad
+
+# Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/12-10_16-14/tmp/merged.lef
+
+# Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/12-10_16-14/results/routing/picorv32a.def
+
+# Creating an OpenROAD database to work with
+write_db pico_route.db
+
+# Loading the created database in OpenROAD
+read_db pico_route.db
+
+# Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/12-10_16-14/results/synthesis/picorv32a.synthesis_preroute.v
+
+# Read library for design
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+# Link design and library
+link_design picorv32a
+
+# Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+# Setting all cloks as propagated clocks
+set_propagated_clock [all_clocks]
+
+# Read SPEF
+read_spef /openLANE_flow/designs/picorv32a/runs/12-10_16-14/results/routing/picorv32a.spef
+
+# Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+# Exit to OpenLANE flow
+exit
+
+```
+
+![D5_11](https://github.com/user-attachments/assets/a83479cb-259e-47b7-8692-9bf2e483e67e)
+
