@@ -350,6 +350,129 @@ run_synthesis
 
 ![D4_15](https://github.com/user-attachments/assets/2df27964-6af4-449e-909a-831ba05804c8)
 
+![D4_16](https://github.com/user-attachments/assets/8ee99463-494d-4920-a039-454b99b63e4b)
 
+```
+run_floorplan
+
+init_floorplan
+
+place_io
+
+tap_decap_or
+
+run_placement
+
+```
+
+![D4_17](https://github.com/user-attachments/assets/56ad6324-430a-497c-ae9f-9b1b7bcf7934)
+
+![D4_18](https://github.com/user-attachments/assets/a9a14ea2-2f62-4108-845e-a475311a715a)
+
+![D4_19](https://github.com/user-attachments/assets/f97a8936-8def-4181-b994-4aadbd75ea00)
+
+![D4_20](https://github.com/user-attachments/assets/f39b5436-00ff-4ab1-90b5-fb223bf29159)
+
+![D4_21](https://github.com/user-attachments/assets/dc192129-6bef-43e3-919e-bc5b624aed22)
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-10_13-08/results/placement/
+
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
+```
+
+![D4_22](https://github.com/user-attachments/assets/f64f0b76-96d2-484d-bfb1-224127494276)
+
+![D4_23](https://github.com/user-attachments/assets/45459b1b-2bd8-4b72-98ad-df6b51a02d9e)
+
+![D4_24](https://github.com/user-attachments/assets/7e94d3eb-4dd1-4c24-bc8e-4dd24d6dad69)
+
+![D4_25](https://github.com/user-attachments/assets/9a4406d9-a95d-49b2-a32e-320a1cbf7c1f)
+
+```
+prep -design picorv32a -tag 16-10_13-08 -overwrite
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+add_lefs -src $lefs
+
+echo $::env(SYNTH_STRATEGY)
+
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+echo $::env(SYNTH_BUFFERING)
+
+echo $::env(SYNTH_SIZING)
+
+set ::env(SYNTH_SIZING) 1
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis
+
+```
+
+![D4_26](https://github.com/user-attachments/assets/892ceaeb-b74e-496c-a473-12150c36a897)
+
+![D4_27](https://github.com/user-attachments/assets/a3b993eb-a157-450e-ae4a-784c2ed68f61)
+
+![D4_28](https://github.com/user-attachments/assets/3fec7422-0c90-40ee-9912-99254288ba22)
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+```
+
+
+![D4_29](https://github.com/user-attachments/assets/79322008-43fe-40a2-9c19-30e4002926e6)
+
+![D4_30](https://github.com/user-attachments/assets/cab5fc57-f8b0-4b10-9c39-b2dbba588a68)
+
+```
+help write_verilog
+
+write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/25-03_18-52/results/synthesis/picorv32a.synthesis.v
+
+exit
+
+```
+
+
+31
+
+
+```
+//Now once again we have to prep design so as to update variables
+prep -design picorv32a -tag 11-10_06-41 -overwrite
+
+//Addiitional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+//Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+//Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+//Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+
+//Follwing commands are alltogather sourced in "run_floorplan" command
+init_floorplan
+place_io
+tap_decap_or
+
+//Now we are ready to run placement
+run_placement
+
+//Incase getting error
+unset ::env(LIB_CTS)
+
+//With placement done we are now ready to run CTS
+run_cts
+
+```
 
 
