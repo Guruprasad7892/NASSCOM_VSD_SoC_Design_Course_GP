@@ -317,7 +317,7 @@ run_synthesis
 ![D4_12](https://github.com/user-attachments/assets/3d596554-ad5b-4c71-b248-342f3f1efd24)
 
 ```
-prep -design picorv32a -tag 16-10_13-08 -overwrite
+prep -design picorv32a -tag 24-03_10-03 -overwrite
 
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
 
@@ -376,7 +376,7 @@ run_placement
 ![D4_21](https://github.com/user-attachments/assets/dc192129-6bef-43e3-919e-bc5b624aed22)
 
 ```
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-10_13-08/results/placement/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/24-03_10-03/results/placement/
 
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 
@@ -391,7 +391,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![D4_25](https://github.com/user-attachments/assets/9a4406d9-a95d-49b2-a32e-320a1cbf7c1f)
 
 ```
-prep -design picorv32a -tag 16-10_13-08 -overwrite
+prep -design picorv32a -tag 24-03_10-03 -overwrite
 
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
 
@@ -432,7 +432,7 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 ```
 help write_verilog
 
-write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/25-03_18-52/results/synthesis/picorv32a.synthesis.v
+write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/24-03_10-03/results/synthesis/picorv32a.synthesis.v
 
 exit
 
@@ -444,7 +444,7 @@ exit
 
 ```
 //Now once again we have to prep design so as to update variables
-prep -design picorv32a -tag 11-10_06-41 -overwrite
+prep -design picorv32a -tag 24-03_10-03 -overwrite
 
 //Addiitional commands to include newly added lef to openlane flow merged.lef
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
@@ -680,7 +680,7 @@ Commands to load PDN def in magic in another terminal
 
 ```
 # Change directory to path containing generated PDN def
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/12-10_16-14/tmp/floorplan/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/13-12_15-06/tmp/floorplan/
 
 # Command to load the PDN def in magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
@@ -716,7 +716,7 @@ Commands to load routed def in magic in other termina
 
 ```
 # Change directory to path containing routed def
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/12-10_16-14/results/routing/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/13-12_15-06/results/routing/
 
 # Command to load the routed def in magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
@@ -735,10 +735,10 @@ Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/12-10_16-14/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/13-12_15-06/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/12-10_16-14/results/routing/picorv32a.def
+read_def /openLANE_flow/designs/picorv32a/runs/13-12_15-06/results/routing/picorv32a.def
 
 # Creating an OpenROAD database to work with
 write_db pico_route.db
@@ -747,7 +747,7 @@ write_db pico_route.db
 read_db pico_route.db
 
 # Read netlist post CTS
-read_verilog /openLANE_flow/designs/picorv32a/runs/12-10_16-14/results/synthesis/picorv32a.synthesis_preroute.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/13-12_15-06/results/synthesis/picorv32a.synthesis_preroute.v
 
 # Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
@@ -762,7 +762,7 @@ read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
 set_propagated_clock [all_clocks]
 
 # Read SPEF
-read_spef /openLANE_flow/designs/picorv32a/runs/12-10_16-14/results/routing/picorv32a.spef
+read_spef /openLANE_flow/designs/picorv32a/runs/13-12_15-06/results/routing/picorv32a.spef
 
 # Generating custom timing report
 report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
