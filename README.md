@@ -620,3 +620,56 @@ echo $::env(CTS_CLK_BUFFER_LIST)
 
 # SECTION-5 (LABS)
 
+Perform generation of Power Distribution Network (PDN) and explore the PDN layout.
+
+```
+//Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+//alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+//Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+
+```
+```
+to invoke the OpenLANE flow in the Interactive mode 
+./flow.tcl -interactive
+
+//command for packages need for openlane
+package require openlane 0.9
+
+//preparing the design for picorv32a
+prep -design picorv32a
+
+//Adiitional commands to include newly added lef to openlane flow
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+//set new value tfor synth size
+set ::env(SYNTH_SIZING) 1
+
+command to run synthesis
+run_synthesis
+
+# Following commands are alltogather sourced in "run_floorplan" command
+init_floorplan
+place_io
+tap_decap_or
+
+# Now we are ready to run placement
+run_placement
+
+# Incase getting error
+unset ::env(LIB_CTS)
+
+# With placement done we are now ready to run CTS
+run_cts
+
+# Now that CTS is done we can do power distribution network
+gen_pdn
+
+```
+
