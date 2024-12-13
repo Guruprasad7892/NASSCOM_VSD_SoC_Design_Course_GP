@@ -90,12 +90,48 @@ magic -T /home/vsduser//Desktop/work/tools/openlane_working_dir/pdks/sky130A/lib
 
 ![D2_5](https://github.com/user-attachments/assets/ab533e6f-fbab-49d7-88ab-87bc4e86c956)
 
+![D2_7](https://github.com/user-attachments/assets/dae853e8-9c88-4892-a73f-bf4fe04f1fa4)
+
 ## LAB SECTION - 2
 
 Placement
 
 ```
 run_placement
+
+```
+
+![D2_8](https://github.com/user-attachments/assets/8566ac9f-735c-4c5d-8a93-b850e028d0e3)
+
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
+```
+
+Running Magic
+
+![D2_9](https://github.com/user-attachments/assets/6d435bfa-3d8f-4c52-86eb-d9919959e8fc)
+
+![D2_10](https://github.com/user-attachments/assets/7e7f35f5-909f-4e01-9bbe-4df7cdc5523e)
+
+
+# SECTION-3 (LABS)
+
+```
+change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+enter command to clone github repo
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+after cloning change directory
+cd vsdstdcelldesign
+
+copying the Magic tech file in vsdstdcelldesign
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech 
+
+command to open custom inverter design in magic tool
+magic -T sky130A.tech sky130_inv.mag &
 
 ```
 
