@@ -439,7 +439,7 @@ exit
 ```
 
 
-31
+![D4_31](https://github.com/user-attachments/assets/49fd89fe-2fe6-47cc-97a9-831da948da94)
 
 
 ```
@@ -475,4 +475,148 @@ run_cts
 
 ```
 
+![D4_32](https://github.com/user-attachments/assets/6b20f1f0-837e-462b-9bf2-59173d3629b6)
+
+![D4_33](https://github.com/user-attachments/assets/79ed8054-bb7c-4751-abe5-b9e9c19acaad)
+
+![D4_34](https://github.com/user-attachments/assets/0bae5ca8-b3a5-4277-9e5b-296285d1d000)
+
+![D4_35](https://github.com/user-attachments/assets/f2d36855-6d84-4046-858e-b8bd8f11619a)
+
+![D4_36](https://github.com/user-attachments/assets/274e80b7-dfdf-44e3-9949-05c56d9f5f39)
+
+```
+//run OpenROAD tool
+openroad
+
+//Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/24-03_10-03/tmp/merged.lef
+
+//Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/cts/picorv32a.cts.def
+
+//Creating an OpenROAD database to work with
+write_db pico_cts.db
+
+//Loading the created database in OpenROAD
+read_db pico_cts.db
+
+//Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/synthesis/picorv32a.synthesis_cts.v
+
+//Read library for design
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+//Link design and library
+link_design picorv32a
+
+//Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+//Setting all cloks as propagated clocks
+set_propagated_clock [all_clocks]
+
+//Check syntax of 'report_checks' command
+help report_checks
+
+//Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+//Exit to OpenLANE flow
+exit
+
+```
+
+![D4_37](https://github.com/user-attachments/assets/371a3417-f1bb-4940-8698-6523302c79cd)
+
+![D4_38](https://github.com/user-attachments/assets/8e88b677-0451-4867-bdef-66779d4817bd)
+
+![D4_39](https://github.com/user-attachments/assets/5bacc614-5065-4082-b331-c72eea8448a1)
+
+![D4_40](https://github.com/user-attachments/assets/691458e8-8349-4478-bf7e-30c94c93caa5)
+
+Commands to be run in OpenLANE flow to do OpenROAD timing analysis after changing CTS_CLK_BUFFER_LIST
+
+```
+//Checking current value of 'CTS_CLK_BUFFER_LIST'
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+//Removing 'sky130_fd_sc_hd__clkbuf_1' from the list
+set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+
+//Checking current value of 'CTS_CLK_BUFFER_LIST'
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+//Checking current value of 'CURRENT_DEF'
+echo $::env(CURRENT_DEF)
+
+//Setting def as placement def
+set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/placement/picorv32a.placement.def
+
+//Run CTS again
+run_cts
+
+//Checking current value of 'CTS_CLK_BUFFER_LIST'
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+//Command to run OpenROAD tool
+openroad
+
+//Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/24-03_10-03/tmp/merged.lef
+
+//Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/cts/picorv32a.cts.def
+
+//Creating an OpenROAD database to work with
+write_db pico_cts1.db
+
+//Loading the created database in OpenROAD
+read_db pico_cts.db
+
+//Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/synthesis/picorv32a.synthesis_cts.v
+
+//Read library for design
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+//Link design and library
+link_design picorv32a
+
+//Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+//Setting all cloks as propagated clocks
+set_propagated_clock [all_clocks]
+
+//Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+//Report hold skew
+report_clock_skew -hold
+
+//Report setup skew
+report_clock_skew -setup
+
+//Exit to OpenLANE flow
+exit
+
+//Checking current value of 'CTS_CLK_BUFFER_LIST'
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+//Inserting 'sky130_fd_sc_hd__clkbuf_1' to first index of list
+set ::env(CTS_CLK_BUFFER_LIST) [linsert $::env(CTS_CLK_BUFFER_LIST) 0 sky130_fd_sc_hd__clkbuf_1]
+
+//Checking current value of 'CTS_CLK_BUFFER_LIST'
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+```
+
+![D4_41](https://github.com/user-attachments/assets/7b2d2a39-5948-41f9-8ce2-d8841be58e3c)
+
+![D4_42](https://github.com/user-attachments/assets/8dfda166-e1fe-424b-ab1e-d9fce8d4a5f4)
+
+![D4_43](https://github.com/user-attachments/assets/b311cc38-b1e2-446f-9d10-48a5b086d0ef)
+
+# SECTION-5 (LABS)
 
