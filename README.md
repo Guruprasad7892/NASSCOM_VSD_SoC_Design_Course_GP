@@ -247,4 +247,109 @@ grid 0.46um 0.34um 0.23um 0.17um
 
 ```
 
+![D4_1](https://github.com/user-attachments/assets/7a303212-5833-429f-82ea-147886efc85b)
+
+![D4_2](https://github.com/user-attachments/assets/afc1b592-af53-4655-9c35-c3e73956dbb0)
+
+![D4_3](https://github.com/user-attachments/assets/1c876cdd-9515-4b7f-906e-c497b17af1eb)
+
+![D4_4](https://github.com/user-attachments/assets/a98fe7f0-8e47-4938-a348-78e4e57824af)
+
+```
+save sky130_vsdinv.mag
+
+magic -T sky130A.tech sky130_vsdinv.mag &
+
+lef write
+
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+```
+
+for lef file
+
+```
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+
+```
+
+
+![D4_5](https://github.com/user-attachments/assets/9b507322-fbcf-44fb-a9f2-0bbb0e6436dd)
+
+![D4_6](https://github.com/user-attachments/assets/f92b45bc-cdae-47da-ae42-9fe9f09ac020)
+
+![D4_7](https://github.com/user-attachments/assets/a956ab09-bcf6-4aa1-a25e-eb20020c6b8b)
+
+![D4_8](https://github.com/user-attachments/assets/bea47d94-7a86-4949-9920-164408672f36)
+
+![D4_9](https://github.com/user-attachments/assets/d8b3bfa5-bcd9-49e6-b421-40c493c78118)
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+docker
+
+./flow.tcl -interactive
+
+package require openlane 0.9
+
+prep -design picorv32a
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+add_lefs -src $lefs
+
+run_synthesis
+
+```
+
+![D4_10](https://github.com/user-attachments/assets/8fed508e-1e28-4d30-8f2b-a98258fa26bb)
+
+![D4_11](https://github.com/user-attachments/assets/419f7287-5aab-4d20-82c3-9da620c52da6)
+
+![D4_12](https://github.com/user-attachments/assets/3d596554-ad5b-4c71-b248-342f3f1efd24)
+
+```
+prep -design picorv32a -tag 16-10_13-08 -overwrite
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+add_lefs -src $lefs
+
+echo $::env(SYNTH_STRATEGY)
+
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+echo $::env(SYNTH_BUFFERING)
+
+echo $::env(SYNTH_SIZING)
+
+set ::env(SYNTH_SIZING) 1
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis
+
+```
+
+
+![D4_13](https://github.com/user-attachments/assets/67cf132e-97a0-4135-aed3-f0604f07525f)
+
+![D4_13a](https://github.com/user-attachments/assets/01af192a-e8df-4f10-b6aa-d37267a8baee)
+
+![D4_14](https://github.com/user-attachments/assets/70e53472-7c09-4ab1-ad5c-db62a5fb5a2c)
+
+![D4_14a](https://github.com/user-attachments/assets/8d55d867-f138-4e75-8437-488e0d7b47ac)
+
+![D4_15](https://github.com/user-attachments/assets/2df27964-6af4-449e-909a-831ba05804c8)
+
+
+
 
