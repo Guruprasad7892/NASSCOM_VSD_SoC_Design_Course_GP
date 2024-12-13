@@ -134,4 +134,53 @@ command to open custom inverter design in magic tool
 magic -T sky130A.tech sky130_inv.mag &
 
 ```
+![D3_1](https://github.com/user-attachments/assets/85b1f683-78cc-47d2-874d-615d7896d175)
+
+![D3_2](https://github.com/user-attachments/assets/70312ac9-72b9-4217-92a3-f029c85e9f54)
+
+![D3_3](https://github.com/user-attachments/assets/20cb4b8e-6f51-443d-88dc-0a4f824e9603)
+
+Difference between layout and lef
+
+![D3_4](https://github.com/user-attachments/assets/e30fe1ef-4094-4a03-9c2d-5fb565400b21)
+
+Commands to run in tkcon terminal of magic tool for spice extraction
+
+```
+command to check directory in which you are present
+pwd
+
+command to run for extraction of file to .ext format
+extract all
+
+command to enable parasitic Extraction
+ext2spice cthresh 0 rthresh 0
+
+command to convert ext to spice file format
+ext2spice
+
+```
+
+
+![D3_5](https://github.com/user-attachments/assets/70372e0b-917f-4c50-8634-8a605a492aef)
+
+![D3_6](https://github.com/user-attachments/assets/fa7f35f4-8e02-4532-bdf2-312995d4c2ff)
+
+![D3_7](https://github.com/user-attachments/assets/6936a640-f29c-4936-b4d0-2fb8b9ab9855)
+
+![D3_8](https://github.com/user-attachments/assets/4471f1e7-a788-44cb-8475-56175db7ead0)
+
+![D3_9](https://github.com/user-attachments/assets/7588a085-8e92-461e-97a7-5a43f45687e6)
+
+```
+gedit sky130_inv.spice
+
+```
+
+```
+ngspice sky130_inv.spice
+
+```
+
+
 
