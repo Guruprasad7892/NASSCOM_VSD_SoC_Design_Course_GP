@@ -73,3 +73,19 @@ Floor Planning
 ```
 run_floorplan
 ```
+![D2_1](https://github.com/user-attachments/assets/41a3e16d-ef77-4f6f-a2f6-fd564f07fac5)
+
+![D2_2](https://github.com/user-attachments/assets/3e3a726f-80b3-48b1-8316-feef517ad624)
+
+![D2_3](https://github.com/user-attachments/assets/a9d35ee1-c6aa-4301-8c0f-5f54dd1c0a0b)
+
+![D2_4](https://github.com/user-attachments/assets/2eb58a7b-1bb2-4249-a682-c75fd039bdcc)
+
+Command to open magic 
+
+```
+magic -T /home/vsduser//Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+
+```
+
+![D2_5](https://github.com/user-attachments/assets/ab533e6f-fbab-49d7-88ab-87bc4e86c956)
