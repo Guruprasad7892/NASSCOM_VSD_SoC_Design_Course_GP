@@ -40,5 +40,14 @@ exit
 ```
 Screenshots of executed commands
 
+![D1_1](https://github.com/user-attachments/assets/fa049502-6d18-400a-9668-fe74df927611)
+
+![D1_2](https://github.com/user-attachments/assets/912534ef-7995-40d5-9b10-14fe18218590)
+
+![D1_3](https://github.com/user-attachments/assets/8a350daf-401c-48ca-a149-6f99e53a939b)
+
+### 2.Calculating Flop_Ratio(D_flipflop):-
+
+![D1_4](https://github.com/user-attachments/assets/38cf4924-9894-41d8-9ce3-a990a43f7207)
 
 
