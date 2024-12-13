@@ -89,3 +89,13 @@ magic -T /home/vsduser//Desktop/work/tools/openlane_working_dir/pdks/sky130A/lib
 ```
 
 ![D2_5](https://github.com/user-attachments/assets/ab533e6f-fbab-49d7-88ab-87bc4e86c956)
+
+## LAB SECTION - 2
+
+Placement
+
+```
+run_placement
+
+```
+
