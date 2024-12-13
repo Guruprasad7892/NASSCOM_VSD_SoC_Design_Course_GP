@@ -676,6 +676,19 @@ gen_pdn
 
 ![D5_2](https://github.com/user-attachments/assets/06250b3c-8dee-4bc8-9e13-c57836e7adb0)
 
+Commands to load PDN def in magic in another terminal
+
+```
+# Change directory to path containing generated PDN def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/12-10_16-14/tmp/floorplan/
+
+# Command to load the PDN def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
+
+```
+
+567
+
 Commands for routing
 
 ```
@@ -693,3 +706,5 @@ run_routing
 ![D5_3](https://github.com/user-attachments/assets/0330d6fc-130e-48e7-9faf-e67a70a4f85f)
 
 ![D5_4](https://github.com/user-attachments/assets/c9d51a87-cab6-4ce9-860d-171fa444577b)
+
+
