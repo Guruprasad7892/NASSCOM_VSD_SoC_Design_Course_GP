@@ -50,4 +50,26 @@ Screenshots of executed commands
 
 ![D1_4](https://github.com/user-attachments/assets/38cf4924-9894-41d8-9ce3-a990a43f7207)
 
+![D1_5](https://github.com/user-attachments/assets/7766df61-f517-40d9-9dc8-38f5e97aeae5)
 
+Number of D Flip Flop = 1613
+
+Total number of cells = 18036
+
+Calculating Flop ratio = no.of d-flipflop/total cells
+
+```
+Flop ratio = 1613/18036 = 0.0894
+
+```
+%of D Flip Flops in the area = 8.94%
+
+# SECTION-2 (LABS)
+
+## LAB SECTION - 1
+
+Floor Planning
+
+```
+run_floorplan
+```
